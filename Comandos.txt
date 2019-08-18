@@ -9,7 +9,7 @@ set-location
 invoke-webrequest -uri "https://raw.githubusercontent.com/hjuninho/Azure-Powershell/master/WebServerConfig.txt" -outfile "webserverconfig.txt"
 
 #CRIAR VMS em SCALE SET
-az vmss create --name VM-1-HJCC --resource-group HJCC.NET-RG-1 --image UbuntuLTS --location "East US 2" --admin-username juninho --generate-ssh-keys --lb HJCC-LB --custom-data coffeewebserverconfig.txt
+az vmss create --name VM-1-HJCC --resource-group HJCC.NET-RG-1 --image UbuntuLTS --location "East US 2" --admin-username juninho --generate-ssh-keys --lb HJCC-LB --custom-data WebServerConfig.txt
 
 #CRIAR REGRA DO LOAD BALANCE em SCALE SET
 az network lb rule create --resource-group HJCC.NET-RG-1 --lb-name HJCC-LB --name hjccLBbrule --backend-pool-name hjcc-LBBEpool --backend-port 80 --frontend-ip-name loadbalancerfrontend --frontend-port 80 --protocol tcp
